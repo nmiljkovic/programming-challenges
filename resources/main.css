@@ -1,0 +1,47 @@
+body
+{
+    padding-top: 20px;
+}
+
+.container ul
+{
+    margin: 0;
+    margin-top: 10px;
+}
+
+.container li
+{
+    list-style-type: none;
+}
+
+.container li a
+{
+    display: block;
+    padding: 20px;
+    text-align: center;
+    color: #00A6FC;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.container li a:hover
+{
+    color: #fff;
+    background-color: #00A6FC;
+    text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6
+{
+    font-family: "Open Sans";
+}
+
+a
+{
+    color: #00A6FC;
+}
+
+a:hover
+{
+    color: #11639D;
+}
