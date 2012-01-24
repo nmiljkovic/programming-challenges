@@ -3,19 +3,87 @@
     <meta charset="utf-8">
     <title>Programming Challenges</title>
 
-    <link rel="stylesheet" type="text/css" href="resources/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="resources/main.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans&subset=latin-ext' rel='stylesheet' type='text/css'>
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/backbone.js"></script>
+
+    <script type="text/javascript" src="js/application.js"></script>
+    <script type="text/javascript" src="js/challenges.js"></script>
+
+    <script type="text/javascript">
+        Challenges.trigger('reset');
+    </script>
+
 </head>
 <body>
 
     <div class="container">
         <h2>Programming Challenges @ <a href="http://www.sk.rs/forum/showthread.php?t=13264">SK Forum</a></h2>
 
+        <div id="content">
         <ul>
             <li><a href="001-socialize/index.html">001 Socialize!</a></li>
         </ul>
+        </div>
     </div>
+
+    <script type="text/template" id="challenge-list"><a href="<%= route %>"><%= name %></a></script>
+    <script type="text/template" id="challenge">
+        <h2><%= name %></h2>
+        <span class="back"><a href="#">nazad</a></span>
+
+        <h4>Opis:</h4>
+        <p><%= detailed.get('desc') %></p>
+
+        <h4>Slanje zadatka</h4>
+        <p><%= detailed.get('submissions') %></p>
+
+        <h4>Ulaz:</h4>
+        <p><%= detailed.get('input') %></p>
+
+        <h4>Izlaz:</h4>
+        <p><%= detailed.get('output') %></p>
+
+        <h4>Ograničenja:</h4>
+        <p><%= detailed.get('limits') %></p>
+
+        <h4>Testcases:</h4>
+        <ol>
+            <% var i;
+               for (i = 1; i <= smallTestcases; i++) { %>
+                <li><a href="<%= getTestcaseUrl('small', i) %>">Small <%= i %></a></li>
+            <% } %>
+            <% for (i = 1; i <= bigTestcases; i++) { %>
+                <li><a href="<%= getTestcaseUrl('small', i) %>">Big <%= i %></a></li>
+            <% } %>
+        </ol>
+
+        <h4>Primeri:</h4>
+
+        <% for (i = 0; i < detailed.samples.length; i++) { %>
+        <table class="sample">
+        <tr>
+            <td>Ulaz</td>
+            <td>Izlaz</td>
+        </tr>
+        <tr>
+            <td><code><%= detailed.samples[i].input %></code></td>
+            <td><code><%= detailed.samples[i].output %></code></td>
+        </tr>
+        </table>
+        <% } %>
+
+        <% if (detailed.hasProperty('explanation')) print(detailed.explanation) %>
+    </script>
+
+    <script type="text/template" id="challenge-not-ready">
+        <h2><%= name %></h2>
+
+        <p>Učitavanje...</p>
+    </script>
 
 </body>
 </html>

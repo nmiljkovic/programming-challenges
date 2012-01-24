@@ -1,0 +1,44 @@
+{
+    "description": "Pravite novu društvenu mrežu, i vaš zadatak je da korisnicima omogućite da preko prijatelja upoznaju druge ljude, koje možda već znaju zato što imaju zajedničkog prijatelja.",
+    "submissions": "<strong>.exe</strong> file pošaljite na <strong>proof1337@gmail.com</strong>, i naznačite vaš username na forumu.",
+    "input": "Podaci se čitaju sa standardnog ulaza. Prva linija sadrži dva cela pozitivna broja, <strong>N</strong> i <strong>M</strong>, gde <strong>N</strong> predstavlja broj korisnika društvene mreže. Svaki korisnik ima jedinstven identifikacioni (u daljem tekstu je id) broj koji počinje od 1, i tako prvi korisnik ima id = 1, drugi ima id = 2 itd. sve do korisnika broj <strong>N</strong> koji ima id = <strong>N</strong>. <br><br>M linija sledi. Svaka linija se sastoji iz dva cela pozitivna broja, <strong>u<sub>i</sub></strong> i <strong>c<sub>i</sub></strong>, koji predstavljaju id prvog korisnika i id drugog korisnika koji su prijatelji. Prijateljstvo je obostrano, tako da ako je korisnik 1 prijatelj sa korisnikom 2, takođe je i korisnik 2 prijatelj sa korisnikom 1.",
+    "output": "Na standardnom izlazu ispisati <strong>N</strong> linija koje sadrže broj preporučenih prijateljstava. Detalji su u primeru.",
+    "limits": "Small testcase: 1 <= <strong>N</strong> <= 100, 1 <= <strong>M</strong> <= 300<br>Big testcase: 1 <= <strong>N</strong> <= 5000, 1 <= <strong>M</strong> <= 20000",
+    "samples": [
+        {
+            "input": "5 4
+1 2
+2 3
+3 1
+4 3",
+            "output": "1
+1
+0
+2
+0"
+        },
+        {
+            "input": "7 6
+1 3
+3 4
+4 5
+5 7
+6 7
+1 7",
+            "output": "3
+0
+2
+2
+3
+2
+2"
+        }
+    ],
+    "explanation": "<h4>Objašnjenje za prvi primer:</h4>
+
+    <p>Prvi korisnik je prijatelj sa korisnicima 2 i 3. Preko drugog korisnika, mogao bi da upozna trećeg, ali pošto je već prijatelj sa njim, to se ne računa. Korisnik 3 je prijatelj sa 4, pa korisnik 1 možda zna korisnika 4, i zato je prva linija 1.</p>
+    <p>Drugi korisnik je prijatelj sa korisnicima 1 i 3. Preko prvog korisnika, mogao bi da upozna trećeg, ali pošto ga već ima u prijateljima, to se ne računa. Preko korisnika 3 može da upozna i korisnika 4, pa je zato druga linija 1.</p>
+    <p>Treći korisnik već ima sve prijatelje, pa on ne bi mogao da upozna nikog više.</p>
+    <p>Četvrti korisnik je prijatelj sa korisnikom 3, koji je prijatelj sa korisnicima 1 i 2. Obzirom da ih nema u prijateljima, a korisnik 3 im je zajednički, mogao bi da se sprijatelji sa obojicom i zato je tu 2.</p>
+    <p>Peti korisnik nema prijatelja, pa nema predloga.</p>"
+}
