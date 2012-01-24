@@ -30,34 +30,34 @@
         </div>
     </div>
 
-    <script type="text/template" id="challenge-list"><a href="<%= route %>"><%= name %></a></script>
+    <script type="text/template" id="challenge-list"><a href="<%= route %>"><%= id + " - " + name %></a></script>
     <script type="text/template" id="challenge">
         <h2><%= name %></h2>
         <span class="back"><a href="#">nazad</a></span>
 
         <h4>Opis:</h4>
-        <p><%= detailed.get('desc') %></p>
+        <p><%= detailed.description %></p>
 
         <h4>Slanje zadatka</h4>
-        <p><%= detailed.get('submissions') %></p>
+        <p><%= detailed.submissions %></p>
 
         <h4>Ulaz:</h4>
-        <p><%= detailed.get('input') %></p>
+        <p><%= detailed.input %></p>
 
         <h4>Izlaz:</h4>
-        <p><%= detailed.get('output') %></p>
+        <p><%= detailed.output %></p>
 
         <h4>Ograničenja:</h4>
-        <p><%= detailed.get('limits') %></p>
+        <p><%= detailed.limits %></p>
 
         <h4>Testcases:</h4>
         <ol>
             <% var i;
                for (i = 1; i <= smallTestcases; i++) { %>
-                <li><a href="<%= getTestcaseUrl('small', i) %>">Small <%= i %></a></li>
+                <li><a href="<%= this.model.getTestcaseUrl('small', i) %>">Small <%= i %></a></li>
             <% } %>
             <% for (i = 1; i <= bigTestcases; i++) { %>
-                <li><a href="<%= getTestcaseUrl('small', i) %>">Big <%= i %></a></li>
+                <li><a href="<%= this.model.getTestcaseUrl('small', i) %>">Big <%= i %></a></li>
             <% } %>
         </ol>
 
@@ -76,7 +76,7 @@
         </table>
         <% } %>
 
-        <% if (detailed.hasProperty('explanation')) print(detailed.explanation) %>
+        <% if (detailed.explanation != undefined) print(detailed.explanation) %>
     </script>
 
     <script type="text/template" id="challenge-not-ready">

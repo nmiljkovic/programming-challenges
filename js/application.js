@@ -37,17 +37,6 @@ Models.Challenge = Backbone.Model.extend({
                 type: 'GET',
                 dataType: 'script'
             });
-            /*$.jsonp({
-                url: this.getDescriptionUrl() + '?callback=?',
-                context: this,
-                dataFilter: function(data) {
-                    console.log(data);
-                    return data;
-                },
-                success: function(data) {
-                    this.set({detailed: data});
-                }
-            });*/
 
             return undefined;
         }
@@ -88,6 +77,7 @@ $(function(){
 
     Views.ChallengesList = Backbone.View.extend({
         tagName: 'ul',
+        className: 'main-list',
 
         initialize: function() {
             this.collection.bind('reset', this.render, this);
@@ -122,6 +112,7 @@ $(function(){
         templateNotReady: _.template($('#challenge-not-ready').html()),
 
         initialize: function() {
+            _.bindAll(this, 'render');
             this.model.bind('change:detailed', this.render, this)
         },
 

@@ -1,20 +1,21 @@
 body
 {
     padding-top: 20px;
+    padding-bottom: 20px;
 }
 
-.container ul
+.container ul.main-list
 {
     margin: 0;
     margin-top: 10px;
 }
 
-.container li
+.container .main-list li
 {
     list-style-type: none;
 }
 
-.container li a
+.container .main-list li a
 {
     display: block;
     padding: 20px;
@@ -24,7 +25,7 @@ body
     font-weight: bold;
 }
 
-.container li a:hover
+.container .main-list li a:hover
 {
     color: #fff;
     background-color: #00A6FC;
