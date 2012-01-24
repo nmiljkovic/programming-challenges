@@ -35,12 +35,20 @@ Models.Challenge = Backbone.Model.extend({
             $.ajax({
                 url: this.getDescriptionUrl(),
                 type: 'GET',
-                crossDomain: true,
-                dataType: 'jsonp',
+                dataType: 'script'
+            });
+            /*$.jsonp({
+                url: this.getDescriptionUrl() + '?callback=?',
+                context: this,
+                dataFilter: function(data) {
+                    console.log(data);
+                    return data;
+                },
                 success: function(data) {
                     this.set({detailed: data});
                 }
-            });
+            });*/
+
             return undefined;
         }
 
@@ -129,6 +137,12 @@ $(function(){
 
 });
 
+RemoteScriptHandler = {};
+RemoteScriptHandler.currentView = null;
+RemoteScriptHandler.handle = function(data) {
+    RemoteScriptHandler.currentView.model.set({detailed: data});
+}
+
 $(function(){
     // application
     var Router = Backbone.Router.extend({
@@ -148,6 +162,7 @@ $(function(){
             })[0];
 
             var challengeView = new Views.Challenge({model: challengeModel});
+            RemoteScriptHandler.currentView = challengeView;
             $('#content').empty().append(challengeView.render().el);
         }
     });
