@@ -78,3 +78,9 @@ code
     background: none;
     font-family: "Consolas", "Courier New";
 }
+
+.loading
+{
+    width: 16px; height: 16px;
+    background: url(../ajax-loader.gif);
+}
