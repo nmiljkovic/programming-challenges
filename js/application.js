@@ -32,8 +32,14 @@ Models.Challenge = Backbone.Model.extend({
 
     getDetailed: function() {
         if (_.isUndefined(this.get('detailed'))) {
-            $.get(this.getDescriptionUrl(), function(data) {
-                this.set({detailed: JSON.parse(data)});
+            $.ajax({
+                url: this.getDescriptionUrl(),
+                type: 'GET',
+                crossDomain: true,
+                dataType: 'jsonp',
+                success: function(data) {
+                    this.set({detailed: data});
+                }
             });
             return undefined;
         }
