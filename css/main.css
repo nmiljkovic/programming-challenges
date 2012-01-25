@@ -106,3 +106,9 @@ code
     color: #fff;
     background-color: #00A6FC;
 }
+
+#check-textarea {
+    width: 885px;
+    height: 200px;
+    margin-bottom: 10px;
+}

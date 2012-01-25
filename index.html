@@ -17,7 +17,6 @@
     <script type="text/javascript">
         Challenges.trigger('reset');
     </script>
-
 </head>
 <body>
 
@@ -59,12 +58,18 @@
         <ol>
             <% var i;
                for (i = 1; i <= smallTestcases; i++) { %>
-                <li><a href="<%= this.model.getTestcaseUrl('small', i) %>">Small <%= i %></a></li>
+                <li><a href="<%= this.model.getTestcaseUrl('small', i) %>">Small <%= i %></a>
+                - 
+                <a class="check" href="#" data-type="small" data-id="<%= i %>">Provera</a></li>
             <% } %>
             <% for (i = 1; i <= bigTestcases; i++) { %>
-                <li><a href="<%= this.model.getTestcaseUrl('big', i) %>">Big <%= i %></a></li>
+                <li><a href="<%= this.model.getTestcaseUrl('big', i) %>">Big <%= i %></a>
+                -
+                <a class="check" href="#" data-type="big" data-id="<%= i %>">Provera</a></li>
             <% } %>
         </ol>
+
+        <div id="input-check"></div>
 
         <h4>Primeri:</h4>
 
@@ -83,6 +88,15 @@
 
         <% if (detailed.explanation != undefined) print(detailed.explanation) %>
     </script>
+
+    <script type="text/template" id="challenge-check">
+        <h3><%= type %> <%= id %></h3>
+
+        <textarea id="check-textarea"></textarea>
+
+        <a class="btn primary" href="#">Proveri</a>
+    </script>
+
     <script type="text/template" id="challenge-competitors">
         <h4>Takmičari:</h4>
         <table class="bordered-table zebra-striped">

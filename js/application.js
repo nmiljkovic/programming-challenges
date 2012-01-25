@@ -15,7 +15,7 @@ Models.UserScorePair = Backbone.Model.extend({});
 
 Models.Challenge = Backbone.Model.extend({
     defaults: {
-        caseUrls: 'https://raw.github.com/proof/programming-challenges/gh-pages/$slug/testcases/$name-$type-$num.in',
+        caseUrls: 'https://raw.github.com/proof/programming-challenges/gh-pages/$slug/testcases/$name-$type-$num.$ext',
         descriptionUrl: 'https://raw.github.com/proof/programming-challenges/gh-pages/$slug/description.json',
         sourceUrl: 'https://raw.github.com/proof/programming-challenges/gh-pages/$slug/source/$user.$ext'
     },
@@ -32,7 +32,6 @@ Models.Challenge = Backbone.Model.extend({
         if (_.isUndefined(this.get('endDate'))) return;
 
         var today = new Date();
-        //console.log(today.toLocalDateString());
         this.set({finished: (this.get('endDate') <= today) ? true : false});
     },
 
@@ -95,12 +94,15 @@ Models.Challenge = Backbone.Model.extend({
         return this.get('descriptionUrl').replace('$slug', this.get('slug'));
     },
 
-    getTestcaseUrl: function(type, testcase) {
+    getTestcaseUrl: function(type, testcase, ext) {
+        if (_.isUndefined(ext)) ext = 'in';
+
         return this.get('caseUrls')
             .replace('$slug', this.get('slug'))
             .replace('$name', this.get('sanitizedName'))
             .replace('$type', type)
-            .replace('$num', testcase);
+            .replace('$num', testcase)
+            .replace('$ext', ext);
     }
 });
 
@@ -197,8 +199,12 @@ $(function(){
         template: _.template($('#challenge').html()),
         templateNotReady: _.template($('#challenge-not-ready').html()),
 
+        events: {
+            'click ol li .check': 'checkClick'
+        },
+
         initialize: function() {
-            _.bindAll(this, 'render');
+            _.bindAll(this, 'render', 'checkClick');
             this.model.bind('change:detailed', this.render, this)
         },
 
@@ -212,6 +218,57 @@ $(function(){
             }
             
             return this;
+        },
+
+        checkClick: function(e) {
+            e.preventDefault();
+            var id = $(e.target).attr('data-id');
+            var type = $(e.target).attr('data-type');
+
+            var view = new Views.ChallengeCheckInput({model: this.model});
+            view.context = {id: id, type: type.charAt(0).toUpperCase() + type.slice(1)};
+            this.$('#input-check').empty().append(view.render().el);
+        }
+    });
+
+    Views.ChallengeCheckInput = Backbone.View.extend({
+        template: _.template($('#challenge-check').html()),
+
+        events: {
+            'click .btn.primary': 'clickButton'
+        },
+
+        initialize: function() {
+            _.bindAll(this, 'render', 'clickButton');
+        },
+
+        render: function() {
+            $(this.el).html(this.template(this.context));
+            return this;
+        },
+
+        clickButton: function(e) {
+            e.preventDefault();
+            var btn = $(e.target);
+
+            this.input = this.$('#check-textarea').val().replace("\r", "").replace("\n", "").replace(/\s+/g, "");
+            $(this.el).append('<div class="loading"></div>');
+
+            $.ajax({
+                url: this.model.getTestcaseUrl(this.context.type.toLowerCase(), this.context.id, 'out'),
+                type: 'GET',
+                dataType: 'script'
+            });
+        },
+
+        callback: function(data) {
+            data = data.replace("\r", "").replace("\n", "").replace(/\s+/g, "");
+            if (data == this.input) {
+                //this.appen
+                console.log('success');
+                return;
+            }
+            console.log('fail');
         }
     });
 
@@ -248,8 +305,12 @@ $(function(){
 
 RemoteScriptHandler = {};
 RemoteScriptHandler.currentView = null;
+RemoteScriptHandler.checkerView = null;
 RemoteScriptHandler.handle = function(data) {
     RemoteScriptHandler.currentView.model.set({detailed: data});
+}
+RemoteScriptHandler.handleOut = function(data) {
+    RemoteScriptHandler.checkerView.callback(data);
 }
 
 $(function(){
