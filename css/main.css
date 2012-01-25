@@ -108,6 +108,7 @@ code
 }
 
 #check-textarea {
+    font-family: 'Consolas', 'Courier New', 'Open Sans', sans-serif;
     width: 885px;
     height: 200px;
     margin-bottom: 10px;

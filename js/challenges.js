@@ -29,4 +29,17 @@
     });
 
     Challenges.add(socialize);
+
+    var vox = new Models.Challenge({
+        id: '002',
+        name: 'Voxels',
+        startDate: new Date(2012, 0, 26),
+        endDate: new Date(2012, 1, 1),
+        smallTestcases: 3,
+        bigTestcases: 2,
+        author: Users.findByName('MG-RAY'),
+        score: function(tc) {
+            return 0;
+        }
+    });
 })();
