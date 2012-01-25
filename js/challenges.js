@@ -42,4 +42,6 @@
             return 0;
         }
     });
+
+    Challenges.add(vox);
 })();
