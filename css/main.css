@@ -84,3 +84,25 @@ code
     width: 16px; height: 16px;
     background: url(../ajax-loader.gif);
 }
+
+.desc {
+    margin-left: 0;
+}
+
+.desc li {
+    list-style-type: none;
+    padding-bottom: 3px;
+    color: #333;
+}
+
+.desc .tag {
+    font-weight: bold;
+    font-size: 90%;
+    text-align: right;
+    display: inline-block;
+    padding: 5px;
+    font-family: 'Open Sans', sans-serif;
+    width: 95px;
+    color: #fff;
+    background-color: #00A6FC;
+}

@@ -11,6 +11,7 @@
     <script type="text/javascript" src="js/backbone.js"></script>
 
     <script type="text/javascript" src="js/application.js"></script>
+    <script type="text/javascript" src="js/users.js"></script>
     <script type="text/javascript" src="js/challenges.js"></script>
 
     <script type="text/javascript">
@@ -24,9 +25,6 @@
         <h2>Programming Challenges @ <a href="http://www.sk.rs/forum/showthread.php?t=13264">SK Forum</a></h2>
 
         <div id="content">
-        <ul>
-            <li><a href="001-socialize/index.html">001 Socialize!</a></li>
-        </ul>
         </div>
     </div>
 
@@ -38,8 +36,15 @@
         <h4>Opis:</h4>
         <p><%= detailed.description %></p>
 
-        <h4>Slanje zadatka</h4>
-        <p><%= detailed.submissions %></p>
+        <ul class="desc">
+            <li><span class="tag">Autor</span> <a href="<%= author.get('forumProfileLink') %>"><%= author.get('username') %></a></li>
+            <li><span class="tag">Počinje</span> <%= startDate.toLocaleTimeString() + ', ' + startDate.toLocaleDateString() %></li>
+            <li>
+                <span class="tag">Završava se</span> <%= endDate.toLocaleTimeString() + ', ' + endDate.toLocaleDateString() %>
+                <% if (finished) print(' <strong>Završeno</strong>') %>
+            </li>
+            <li><span class="tag">Slanje zadatka</span> <%= detailed.submissions %></li>
+        </ul>
 
         <h4>Ulaz:</h4>
         <p><%= detailed.input %></p>
@@ -77,6 +82,38 @@
         <% } %>
 
         <% if (detailed.explanation != undefined) print(detailed.explanation) %>
+    </script>
+    <script type="text/template" id="challenge-competitors">
+        <h4>Takmičari:</h4>
+        <table class="bordered-table zebra-striped">
+            <tr>
+                <td>User</td>
+                <% for (var i = 1; i <= smallTestcases; i++) { %>
+                <td>Small <%= i %></td>
+                <% } %>
+                <% for (var i = 1; i <= bigTestcases; i++) { %>
+                <td>Big <%= i %></td>
+                <% } %>
+                <td>Total Score</td>
+                <td>Source</td>
+            </tr>
+        </table>
+    </script>
+
+    <script type="text/template" id="challenge-competitor-list">
+        <td><a href="<%= user.get('forumProfileLink') %>"><%= user.get('username') %></a></td>
+        <% for (var i = 0; i < score.small.length; i++) { %>
+            <td><%= score.small[i] %></td>
+        <% } %>
+        <% for (var i = 0; i < score.big.length; i++) { %>
+            <td><%= score.big[i] %></td>
+        <% } %>
+        <td><%= calculatedScore %></td>
+        <td>
+            <% if (source != false) { %>
+            <a href="<%= source %>">Download</a>
+            <% } else print('-') %>
+        </td>
     </script>
 
     <script type="text/template" id="challenge-not-ready">
