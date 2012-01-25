@@ -269,6 +269,10 @@ $(function(){
                 replace(/^\s+/g, "").replace(/\s+$/g, "");
             this.$('.loading').remove();
 
+            console.log(data);
+            console.log(this.input);
+            console.log(data.length, this.input.length);
+
             if (data == this.input) {
                 this.$('.btn.primary').addClass('disabled').addClass('success').removeClass('primary').html('Uspesno!');
                 return;
