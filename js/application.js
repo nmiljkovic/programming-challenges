@@ -235,7 +235,8 @@ $(function(){
         template: _.template($('#challenge-check').html()),
 
         events: {
-            'click .btn.primary': 'clickButton'
+            'click .btn.primary': 'clickButton',
+            'click .btn.info': 'removeView'
         },
 
         initialize: function() {
@@ -251,8 +252,10 @@ $(function(){
             e.preventDefault();
             var btn = $(e.target);
 
-            this.input = this.$('#check-textarea').val().replace("\r", "").replace("\n", "").replace(/\s+/g, "");
+            this.input = this.$('#check-textarea').val().replace("\r", "").replace("\n", " ").replace(/\s+/g, " ").
+                replace(/^\s+/g, "").replace(/\s+$/g, "");
             $(this.el).append('<div class="loading"></div>');
+            RemoteScriptHandler.checkerView = this;
 
             $.ajax({
                 url: this.model.getTestcaseUrl(this.context.type.toLowerCase(), this.context.id, 'out'),
@@ -262,14 +265,19 @@ $(function(){
         },
 
         callback: function(data) {
-            data = data.replace("\r", "").replace("\n", "").replace(/\s+/g, "");
+            data = data.replace("\r", "").replace("\n", " ").replace(/\s+/g, " ").
+                replace(/^\s+/g, "").replace(/\s+$/g, "");
+            this.$('.loading').remove();
+
             if (data == this.input) {
-                //this.appen
-                console.log('success');
+                this.$('.btn.primary').addClass('disabled').addClass('success').removeClass('primary').html('Uspesno!');
                 return;
             }
-            console.log('fail');
-        }
+            
+            this.$('.btn.primary').addClass('disabled').addClass('danger').removeClass('primary').html('Greška!');
+        },
+
+        removeView: function(e) { e.preventDefault(); this.remove(); }
     });
 
     Views.ChallengeCompetitorsList = Backbone.View.extend({
