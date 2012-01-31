@@ -39,14 +39,19 @@
         bigTestcases: 2,
         author: Users.findByName('MG-RAY'),
         score: function(tc) {
-            return 0;
+            var total = 0, i;
+            for (i = 0; i < 3; i++)
+            {
+                total += tc.small[i];
+                total += (i < 2) ? tc.big[i] : 0;
+            }
+            return total;
         }
     });
 
     vox.addUser(Users.findByName('Belphegor'), {
-        small: [100, 100, 100], big: [100, 100],
-        source: 'cpp'
-    });
+        small: [100, 100, 100], big: [100, 100]
+    }, 'cpp');
 
     vox.addUser(Users.findByName('Todors'), {
         small: [100, 100, 100], big: [100, 100]

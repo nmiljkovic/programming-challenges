@@ -63,10 +63,11 @@ Models.Challenge = Backbone.Model.extend({
 
         if (_.isUndefined(source))
             source = false;
-        else {
+        else
             source = this.get('sourceUrl')
-                .replace('$slug', this.get('slug')).replace('$user', user.get('username')).replace('$ext', source);
-        }
+                .replace('$slug', this.get('slug'))
+                .replace('$user', user.get('username').toLowerCase())
+                .replace('$ext', source);
 
         this.get('users').add(new Models.UserScorePair({
             user: user,
