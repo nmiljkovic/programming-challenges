@@ -43,5 +43,14 @@
         }
     });
 
+    vox.addUser(Users.findByName('Belphegor'), {
+        small: [100, 100, 100], big: [100, 100],
+        source: 'cpp'
+    });
+
+    vox.addUser(Users.findByName('Todors'), {
+        small: [100, 100, 100], big: [100, 100]
+    });
+
     Challenges.add(vox);
 })();
