@@ -54,7 +54,7 @@
     }, 'cpp');
 
     vox.addUser(Users.findByName('Todors'), {
-        small: [100, 100, 100], big: [100, 100]
+        small: [0, 0, 0], big: [0, 0]
     });
 
     Challenges.add(vox);
