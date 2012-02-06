@@ -58,4 +58,21 @@
     });
 
     Challenges.add(vox);
+
+    var skladiste = new Models.Challenge({
+        id: '003',
+        name: 'Skladiste',
+        startDate: new Date(2012, 1, 2),
+        endDate: new Date(2012, 1, 6),
+        smallTestcases: 0,
+        bigTestcases: 0,
+        author: Users.findByName('Belphegor'),
+        score: function(tc) { return 0; }
+    });
+
+    skladiste.addUser(Users.findByName('EclipsE'), {
+        small: [], big: []
+    }, 'cpp');
+
+    Challenges.add(skladiste);
 })();

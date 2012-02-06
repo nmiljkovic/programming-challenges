@@ -1,0 +1,14 @@
+RemoteScriptHandler.handle({
+    "description": "Kao zaposleni u jednom stovarištu građevinskog materijala dobili ste narudžbinu da isečete određen broj metalnih šipki na određenu dužinu. \"Sirove\" šipke sa lega (polica za materijal) uzimate za obradu i one su takođe određene dužine.<br><br>Vaš zadatak je da ih isečete tako da se iskoristi što manji broj celih (sirovih) šipki.",
+    "submissions": ".exe fajl sa vašim rešenjem možete postaviti na forum, ili poslati mailom na programming.challenges.sk@gmail.com .<br><br> Rezultati će biti objavljeni na kraju challenge-a",
+    "input": "Podaci se čitaju sa standardnog ulaza. Prva linija sadrži pozitivan ceo broj <strong>L</strong> koji predstavlja dužinu sirove šipke. <br><br>U novom redu sledi broj <strong>N</strong>, koji označava parova podataka sa zahtevima za sečenje imate.<br><br>U svakom novom redu se nalazi <strong>N</strong> parova, <strong>C</strong> i <strong>W</strong>, razdvojenih praznim prostorom, gde je:<br><strong>C</strong> - broj komada koji treba iseći, ceo broj.<br><strong>W</strong> - dužina jednog komada, realni broj sa jednim decimalnim mestom.",
+    "output": "Na standardnom izlazu ispisati sledeće: <br>Broj utrošenih šipki.",
+    "limits": "1 <= L <= 100000<br>1 <= N <= 100000<br>1 <= C <= 1000<br>1.0 <= W <= 1000.0<br><br>Podatke ne treba validirati.",
+    "samples": [
+        {
+            "input": "15\n7\n4 7.2\n8 2.5\n9 1.8\n2 5.1\n7 1.8\n1 12.6\n5 3.3",
+            "output": "jedna linija, najmanji broj sipki"
+        }
+    ],
+    "explanation": ""
+});
