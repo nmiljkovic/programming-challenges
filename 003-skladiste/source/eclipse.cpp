@@ -65,6 +65,7 @@ int main()
         i = (parts[i].count == 0) ? (i + 1) : i;
     }
 
+    if (currentLength != length) cnt++;
     cout << cnt;
 
     return 0;
