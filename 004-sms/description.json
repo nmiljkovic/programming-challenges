@@ -7,7 +7,7 @@ RemoteScriptHandler.handle({
     "samples": [
         {
             "input": "55\novo je test poruka za challenge. forum sveta kompjutera",
-            "output": "666888666053308337777807666777885520999920222442555.555336643310333666777886077778883382055666.67588.833777"
+            "output": "666888666053308337777807666777885520999920222442555.555336643310333666777886077778883382055666.67588.8337772"
         }
     ],
     "explanation": "<h2>NOTE</h2> <p>Ulaz <strong>NE SADRŽI NEWLINE KARAKTERE</strong> - table je samo tako prikazao input.</p> <p><img src=\"http://i44.tinypic.com/2mywvmu.png\"/></p>"
