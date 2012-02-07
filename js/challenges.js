@@ -75,4 +75,15 @@
     }, 'cpp');
 
     Challenges.add(skladiste);
+
+    var sms = new Models.Challenge({
+        id: '004',
+        name: 'SMS',
+        startDate: new Date(2012, 1, 7),
+        endDate: new Date(2012, 1, 20),
+        smallTestcases: 4,
+        bigTestcases: 2,
+        author: Users.findByName('EclipsE'),
+        score: function(tc) { return 0; }
+    });
 })();

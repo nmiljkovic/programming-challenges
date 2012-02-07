@@ -1,0 +1,14 @@
+RemoteScriptHandler.handle({
+    "description": "Ovaj challenge nije originalan (već sam ga video negde, zaboravio gde :o). Cilj je ispisati tastere na telefonu koje treba pritisnuti zaredom, tako da se SMS poruka napiše.",
+    "submissions": ".exe fajl sa vašim rešenjem možete postaviti na forum, ili poslati mailom na programming.challenges.sk@gmail.com .<br><br> Rezultati će biti objavljeni na kraju challenge-a",
+    "input": "Podaci se čitaju sa standardnog ulaza. Prva linija sadrži pozitivan ceo broj <strong>N</strong> koji predstavlja dužinu poruke. U novoj liniji, <strong>N</strong> slova/znakova sledi.<br><br>Slova su a-z koja su mapirana na telefonu na tasterima 2-9 (pogledajte vaš telefon). Na tasteru 1 su mapirani redom <strong>.,!</strong>, a na tasterima <strong>*</strong> i <strong>#</strong> baš ti znakovi.",
+    "output": "Na standardnom izlazu ispisati redom tastere koji se moraju pritisnuti, tako da se poruka napiše. Slovo <strong>a</strong> se ispisuje tasterom <strong>2</strong>. Slovo <strong>b</strong> se ispisuje stiskajuci taster 2 dva puta. Rec ab se ispisuje kao <strong>2.22</strong> - ukoliko su dva slova na istom tasteru, a taj <strong>taster sadrži više od 1 slova/znaka</strong>, ispisuje se <strong>.</strong> (tačka) između njih koja označava kratku pauzu.",
+    "limits": "1 <= N <= 50.000",
+    "samples": [
+        {
+            "input": "55\novo je test poruka za challenge. forum sveta kompjutera",
+            "output": "666888666053308337777807666777885520999920222442555.555336643310333666777886077778883382055666.67588.833777"
+        }
+    ],
+    "explanation": ""
+});
