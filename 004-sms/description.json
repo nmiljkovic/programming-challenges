@@ -10,5 +10,5 @@ RemoteScriptHandler.handle({
             "output": "666888666053308337777807666777885520999920222442555.555336643310333666777886077778883382055666.67588.833777"
         }
     ],
-    "explanation": ""
+    "explanation": "<h2>NOTE</h2> <p>Ulaz <strong>NE SADRŽI NEWLINE KARAKTERE</strong> - table je samo tako prikazao input.</p>"
 });
