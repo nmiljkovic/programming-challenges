@@ -86,4 +86,6 @@
         author: Users.findByName('EclipsE'),
         score: function(tc) { return 0; }
     });
+
+    Challenges.add(sms);
 })();
