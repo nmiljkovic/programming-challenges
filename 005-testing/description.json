@@ -1,12 +1,12 @@
 RemoteScriptHandler.handle({
     "description": "Ovaj challenge je malo drugačiji. Vaš zadatak je da napravite autotest suite, koji će prethodni, i svaki naredni challenge da testira.",
     "submissions": ".exe fajl sa vašim rešenjem i uputstvima upotrebe možete postaviti na forum, ili poslati mailom na programming.challenges.sk@gmail.com .<br><br> Rezultati će biti objavljeni na kraju challenge-a",
-    "input": "Vi birate način na koji se ulazni podaci dostavljaju programu. Program treba da primi: <br><br><ul><li>Ime programa koji generiše test</li><li>Ime programa koji generiše pravo rešenje za test</li><li>Broj malih (small) testcaseova</li><li>Broj velikih (big) testcaseova</li><li>Putanju na kojoj se nalaze svi .exe fajlovi takmičara</li></ul> <br>Vaš program treba da pomoću programa koji generiše testove, izgeneriše small i big testcaseove, pozove program koji ih rešava i dobije output svih testcaseova, a onda pokrene svaki .exe fajl u folderu koji je prosleđen sa svakim inputom, uporedi input i output i boduje ga. Način bodovanja sami pretpostaviti (bonus za više načina bodovanja), kao i ostale mogućnosti koje bi program za testiranje mogao da ima. Ovaj zadatak će se bodovati na osnovu featurea koje ima, i na osnovu preglednosti source-a. Ne mora biti konzolni program.",
+    "input": "Vi birate način na koji se ulazni podaci dostavljaju programu. Program treba da primi: <br><br><ul><li>Ime programa koji generiše test i rešava ga</li><li>Broj malih (small) testcaseova</li><li>Broj velikih (big) testcaseova</li><li>Putanju na kojoj se nalaze svi .exe fajlovi takmičara</li></ul> <br>Vaš program treba da pomoću programa koji generiše testove, izgeneriše small i big testcaseove, onda ih pomoću istog programa reši, a onda pokrene svaki .exe fajl u folderu sa takmičarskim programima koji je prosleđen sa svakim inputom, uporedi input i output i boduje ga. Način bodovanja sami pretpostaviti (bonus za više načina bodovanja), kao i ostale mogućnosti koje bi program za testiranje mogao da ima. Ovaj zadatak će se bodovati na osnovu featurea koje ima, i na osnovu preglednosti source-a. Ne mora biti konzolni program.",
     "output": "Način output-a rezultata birate sami.",
     "limits": "Bez ograničenja",
     "samples": [
         {
-            "input": "Program koji generiše testove:\nimeprograma small|big < input-file > output-file\n\nProgram koji dobije input i reši ga:\nimeprograma < input-file > output-file\n\nPretpostaviti da svi takmičarski programi primaju parametre sa std",
+            "input": "Ako program generiše testove:\nimeprograma generate small|big > output-file\n\nAko program rešava testove:\nimeprograma solve < input-file > output-file\n\nPretpostaviti da svi takmičarski programi primaju parametre sa std",
             "output": "-"
         }
     ],
