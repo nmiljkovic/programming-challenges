@@ -1,4 +1,5 @@
 (function(){
+    // SOCIALIZE
     var socialize = new Models.Challenge({
         id: '001',
         name: 'Socialize',
@@ -30,6 +31,7 @@
 
     Challenges.add(socialize);
 
+    // VOX
     var vox = new Models.Challenge({
         id: '002',
         name: 'Voxels',
@@ -59,6 +61,7 @@
 
     Challenges.add(vox);
 
+    // SKLADISTE
     var skladiste = new Models.Challenge({
         id: '003',
         name: 'Skladiste',
@@ -76,16 +79,37 @@
 
     Challenges.add(skladiste);
 
+    // SMS
     var sms = new Models.Challenge({
         id: '004',
         name: 'SMS',
         startDate: new Date(2012, 1, 7),
-        endDate: new Date(2012, 1, 20),
+        endDate: new Date(2012, 1, 11),
         smallTestcases: 4,
         bigTestcases: 2,
         author: Users.findByName('EclipsE'),
         score: function(tc) { return 0; }
     });
 
+    sms.addUser(Users.findByName('Geomaster'));
+    sms.addUser(Users.findByName('Belphegor'));
+    sms.addUser(Users.findByName('NISAM NESTO SMART'));
+    sms.addUser(Users.findByName('MG-RAY'));
+    sms.addUser(Users.findByName('Kosinus'));
+
     Challenges.add(sms);
+
+    // TESTING
+    var testing = new Models.Challenge({
+        id: '005',
+        name: 'Testing',
+        startDate: new Date(2012, 1, 11),
+        endDate: new Date(2012, 1, 20),
+        smallTestcases: 0,
+        bigTestcases: 0,
+        author: Users.findByName('EclipsE'),
+        score: function(tc) { return 0; } 
+    });
+
+    Challenges.add(testing);
 })();
